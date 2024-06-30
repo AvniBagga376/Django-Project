@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Home {% endblock title %}
+{% load static %}
+{% block body %}
+
+<div class="landing">
+    <div class="landingText" data-aos="fade-up" data-aos-duration="1000">
+        <h1>Hi, I'm<span style="color:#e0501b;font-size: 4vw"> Avni Bagga.</span> </h1>
+        <h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi, quibusdam!. <br> Lorem ipsum dolor sit.</h3>
+        <div class="btn">
+            <a href="#">Learn More</a>
+        </div>
+    </div>
+    <div class="landingImage" data-aos="fade-down" data-aos-duration="2000">
+        <img src="{% static 'img/bg.png' %}" alt="">
+    </div>
+</div>
+{% endblock body %}
