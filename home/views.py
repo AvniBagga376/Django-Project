@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
-# avnibagga= Avni242@
+
 
 # Create your views here.
 def index(request):
