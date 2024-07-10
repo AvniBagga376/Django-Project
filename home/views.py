@@ -69,12 +69,11 @@ def products(request):
             return redirect('products')
     else:
         form = ProductForm()
-
     products = Product.objects.all()
     categories = Category.objects.all()
     return render(request, 'products.html', {'form': form, 'products': products, 'categories': categories})
 
 def delete_product(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
+    product = Product.objects.get(id=product_id)
     product.delete()
     return redirect('products')
