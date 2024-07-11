@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock title %}
+{% block body %}
+<div class="container mt-9" style="margin-top:100px">
+    <h2>Products</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+    <hr>
+    <h3>Existing Products</h3>
+    <ul class="list-group">
+        {% for product in products %}
+            <li class="list-group-item">
+                {{ product.product_id }} - {{ product.name }} - {{ product.category.name }} -₹{{ product.price }}
+                <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm float-end">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock body %}
