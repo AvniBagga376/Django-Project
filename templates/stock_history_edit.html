@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Edit Stock History{% endblock title %}
+{% block body %}
+<div class="container mt-9" style="margin-top: 100px;">
+    <h2>Edit Stock History</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock body %}
