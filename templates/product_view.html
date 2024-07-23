@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Product View{% endblock title %}
+{% block body %}
+<div class="container mt-9" style="margin-top: 100px;">
+    <h2>{{ product.name }}</h2>
+    <p>Product ID: {{ product.product_id }}</p>
+    <p>Price: {{ product.price }}</p>
+    <p>Initial Quantity: {{ product.quantity }}</p>
+    <p>Current Stock: {{ current_stock }}</p>
+    <hr>
+    
+    <!-- Add Quantity Form -->
+    <h3>Add Quantity</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add Quantity</button>
+    </form>
+    
+    <hr>
+    <h3>Stock History</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Current Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in stock_entries %}
+                <tr>
+                    <td>{{ entry.date }}</td>
+                    <td>{{ entry.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

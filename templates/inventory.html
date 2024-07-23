@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Inventory{% endblock title %}
+{% block body %}
+<div class="container mt-9" style="margin-top: 100px;">
+    <h2>Inventory</h2>
+    {% comment %} <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Add/Update Stock</button>
+    </form> {% endcomment %}
+    <hr>
+    <h3>Existing Products</h3>
+    <ul class="list-group">
+        {% for product in products %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ product.name }} ({{ product.category.name }})
+                <span>Price: {{ product.price }}</span>
+                <span>Initial Quantity: {{ product.quantity }}</span>
+                <span>Current Stock: {{ product.current_stock }}</span>
+                <a href="{% url 'product_view' product.id %}" class="btn btn-info btn-sm">View</a>
+                <form method="post" action="{% url 'delete_product' product.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock body %}
